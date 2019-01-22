@@ -1,0 +1,15 @@
+Library
+  {
+  Title:"titlename"
+  authors: [{" ", " "}],
+	ISBN: "000-0-00-0000-0",
+	keyword: {" "},
+	borrowedDate:new Date("yyyy/mm/dd"),
+	dueDate:new Date("yyyy/mm/dd"),
+        isReturned:{true,false}
+	student:{
+		"name":" ",
+                 "id":" "
+		 "e-mail":abc@mum.edu
+                 }
+     }
