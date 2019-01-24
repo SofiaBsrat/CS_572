@@ -1,0 +1,20 @@
+
+
+### Exercise 2
+
+```javascript
+Book: {
+  ISBN: String,
+  author: String,
+  keywords: [String],
+  borrowedStudents: [{
+      returnDate: Date,
+      student: Student
+    }]
+}
+```
+
+```
+db.book.createIndex({ author: 1 });
+db.book.createIndex({ keywords: 1 });
+```

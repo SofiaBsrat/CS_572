@@ -1,0 +1,29 @@
+Mongo Queries: 
+--------------
+Query 1: db.restaurants.find()
+Query 2: db.restaurants.find({}, {restaurant_id:1, name:1, district:1, cuisine:1})
+Query 3: db.restaurants.find({}, {_id:0, restaurant_id:1, name:1, district:1, cuisine:1})
+Query 4: db.restaurants.find({}, {_id:0, restaurant_id:1, name:1, district:1, cuisine:1, "address.zipcode":1})
+Query 5: db.restaurants.find({district:"Bronx"})
+Query 6: db.restaurants.find({district:"Bronx"}).limit(5)
+Query 7: db.restaurants.find({district:"Bronx"}).skip(5).limit(5)
+Query 8: db.restaurants.find({"address.coord.0": { $lt:-95.754168}})
+Query 9: db.restaurants.find({cuisine:{$ne:"American "}, "grades.score": {$gt:70}, "address.coord.0":{$lt:-65.754168}}) // Array nin
+Query 10: db.restaurants.find({name: {$regex:'^Wil', $options: 'i'}}, {_id:0, restaurant_id:1, name:1, district:1, cuisine:1})
+Query 11: db.restaurants.find({name: {$regex:"ces$", $options: "i"}}, {_id:0, restaurant_id:1, name:1, district:1, cuisine:1})
+Query 12:  db.restaurants.find({name: {$regex:".*Reg.*", $options: "i"}}, {_id:0, restaurant_id:1, name:1, district:1, cuisine:1})
+Query 13: 
+  [OPTION 1:] db.restaurants.find({district:'Bronx', cuisine:{$in:['Chinese'] }})
+  [OPTION 2:]db.restaurants.find({$and:[ {district:'Bronx'}, {$or:[{cuisine:'American '}, {cuisine: 'Chinese'}]}]})
+Query 14: db.restaurants.find({district:{$in:['Bronx', 'Brooklyn', 'Queens', 'Staten Island']}},{_id:0, restaurant_id:1, name:1, district:1, cuisine:1})
+Query 15: db.restaurants.find({district:{$nin:['Bronx', 'Brooklyn', 'Queens', 'Staten Island']}},{_id:0, restaurant_id:1, name:1, district:1, cuisine:1})
+Query 16: db.restaurants.find({'grades.score':{$lte:10}}, {_id:0, restaurant_id:1, name:1, district:1, cuisine:1})
+Query 17: db.restaurants.find({'address.coord.1': {$gt:42, $lte:52}}, {_id:0, restaurant_id:1, name:1, address:1})
+Query 18: db.restaurants.find().sort({name:1})
+Query 19: db.restaurants.find().sort({name:-1})
+Query 20: db.restaurants.find().sort({cuisine:1, district:-1})
+Query 21: db.restaurants.find({'address.street':{$exists: true}}).count()
+Query 22: 
+  [OPTION 1:] db.restaurants.find({'address.coord':{$type: 'double' }}).count()
+  [OPTION 1:] db.restaurants.find({'address.coord':{$type: '1' }}).count()
+Query 23: db.restaurants.find({name: {$regex:'^Mad', $options: 'i'}}, {_id:0, name:1, district:1, 'address.coord':1, cuisine:1})
