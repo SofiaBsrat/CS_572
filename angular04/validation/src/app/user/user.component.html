@@ -1,0 +1,36 @@
+<div class="container">
+    <h1>User</h1>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" required [(ngModel)]="user.name" #name="ngModel">
+        </div>
+        <div *ngIf="!name.valid && f.submitted">
+            Required
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" name="email" 
+            required [(ngModel)]="user.email" 
+            pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+            #email="ngModel"
+            >
+        </div>
+        <div *ngIf="!email.valid && f.submitted">
+            Required
+        </div>
+
+        <div class="form-group">
+            <label for="post">Post</label>
+            <textarea class="form-control" id="post" name="post" required [(ngModel)]="user.post" #post="ngModel"></textarea>
+        </div>
+        <div *ngIf="!post.valid && f.submitted">
+            Required
+        </div>
+
+        <button type="submit" [disabled]="!f.valid"  class="btn btn-primary">Submit</button>&nbsp;
+        <button type="button" (click)="getData()" class="btn btn-primary">Get Data</button>
+
+    </form>
+</div>
